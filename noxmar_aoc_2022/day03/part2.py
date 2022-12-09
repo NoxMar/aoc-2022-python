@@ -15,7 +15,7 @@ def _triplewise(it: Iterator[T]) -> Generator[tuple[T, ...], None, None]:
 
 
 def get_groups(input_file: TextIO) -> Generator[tuple[str, str, str], None, None]:
-    return _triplewise(l.rstrip() for l in input_file)
+    return _triplewise(line.rstrip() for line in input_file)
 
 
 def solution(input_file: TextIO) -> int:
