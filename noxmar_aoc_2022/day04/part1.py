@@ -12,6 +12,15 @@ class SimpleRange:
     def __contains__(self, other: "SimpleRange"):
         return self.start >= other.start and self.end <= other.end
 
+    def overlaps(self, other: "SimpleRange") -> bool:
+        if self.start <= other.start:
+            left = self
+            right = other
+        else:
+            left = other
+            right = self
+        return right.start <= left.end or right in left
+
 
 _input_regex = re.compile(r"(\d+)-(\d+),(\d+)-(\d+)")
 
